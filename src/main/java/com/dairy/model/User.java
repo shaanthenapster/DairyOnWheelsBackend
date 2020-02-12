@@ -1,27 +1,32 @@
 package com.dairy.model;
 
 
+import com.dairy.enums.AuthProvider;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "user")
-@Setter
-@Getter
+@Document
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
+    @Indexed
+    private String  id;
+
+    @Indexed
     private String uuid;
 
     private String userName;
@@ -36,7 +41,17 @@ public class User {
 
     private String sex;
 
-    @OneToMany(mappedBy = "user")
+    private String imageUrl;
+
+    private Boolean emailVerified = false;
+
+    @JsonIgnore
+    private String password;
+
+    private AuthProvider provider;
+
+    private String providerId;
+
     private List<DeliveryAddress> address = new ArrayList<>();
 
 
@@ -55,3 +70,4 @@ public class User {
 
 
 }
+

@@ -20,6 +20,7 @@ import static com.dairy.configuration.HttpCookieOAuth2AuthorizationRequestReposi
 @Component
 public class OAuth2AuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
+
     @Autowired
     HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
 

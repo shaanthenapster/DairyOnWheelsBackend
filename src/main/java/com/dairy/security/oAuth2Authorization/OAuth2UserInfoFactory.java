@@ -1,6 +1,7 @@
-package com.dairy.security;
+package com.dairy.security.oAuth2Authorization;
 
 import com.dairy.enums.AuthProvider;
+import com.dairy.exception.OAuth2AuthenticationProcessingException;
 
 import java.util.Map;
 

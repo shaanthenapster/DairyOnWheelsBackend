@@ -1,4 +1,4 @@
-package com.dairy.security.oAuth2Authorization;
+package com.dairy.exception;
 
 
 import org.springframework.security.core.AuthenticationException;

@@ -1,28 +1,15 @@
-security:
+spring:
+ security:
   oauth2:
     client:
       registration:
-        google:
-          clientId: 5014057553-8gm9um6vnli3cle5rgigcdjpdrid14m9.apps.googleusercontent.com
-          clientSecret: tWZKVLxaD_ARWsriiiUFYoIk
-          redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
-          scope:
-          - email
-          - profile
         facebook:
-          clientId: 121189305185277
-          clientSecret: 42ffe5aa7379e8326387e0fe16f34132
+          clientId: 184645355974150
+          clientSecret: 20bcc69a2bf06e3a9e0da2be56ca5006
           redirectUri: "{baseUrl}/oauth2/callback/{registrationId}" # Note that facebook now mandates the use of https redirect URIs, so make sure your app supports https in production
           scope:
           - email
           - public_profile
-        github:
-          clientId: d3e47fc2ddd966fa4352
-          clientSecret: 3bc0f6b8332f93076354c2a5bada2f5a05aea60d
-          redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
-          scope:
-          - user:email
-          - read:user
       provider:
         facebook:
           authorizationUri: https://www.facebook.com/v3.0/dialog/oauth

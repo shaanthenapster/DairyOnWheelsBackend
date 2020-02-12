@@ -1,12 +1,9 @@
-package com.dairy.security;
+package com.dairy.security.oAuth2Authorization;
 
 import com.dairy.enums.AuthProvider;
+import com.dairy.exception.OAuth2AuthenticationProcessingException;
 import com.dairy.model.User;
 import com.dairy.repository.UserRepo;
-import com.example.springsocial.exception.OAuth2AuthenticationProcessingException;
-import com.example.springsocial.model.AuthProvider;
-import com.example.springsocial.security.UserPrincipal;
-import com.example.springsocial.security.oauth2.user.OAuth2UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
@@ -66,14 +63,14 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService{
 
         user.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
         user.setProviderId(oAuth2UserInfo.getId());
-        user.setName(oAuth2UserInfo.getName());
+        user.setUserName(oAuth2UserInfo.getName());
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setImageUrl(oAuth2UserInfo.getImageUrl());
         return userRepository.save(user);
     }
 
     private User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) {
-        existingUser.setName(oAuth2UserInfo.getName());
+        existingUser.setUserName(oAuth2UserInfo.getName());
         existingUser.setImageUrl(oAuth2UserInfo.getImageUrl());
         return userRepository.save(existingUser);
     }

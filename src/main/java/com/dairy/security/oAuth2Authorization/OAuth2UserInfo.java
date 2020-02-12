@@ -1,4 +1,4 @@
-package com.dairy.security;
+package com.dairy.security.oAuth2Authorization;
 
 import java.util.Map;
 

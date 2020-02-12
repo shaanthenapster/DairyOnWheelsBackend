@@ -1,5 +1,11 @@
 package com.dairy.configuration;
 
+import com.dairy.security.jwtAuthentication.CustomUserDetailsService;
+import com.dairy.security.jwtAuthentication.TokenAuthenticationFilter;
+import com.dairy.security.oAuth2Authorization.CustomOAuth2UserService;
+import com.dairy.security.oAuth2Authorization.OAuth2AuthenticationFailureHandler;
+import com.dairy.security.oAuth2Authorization.OAuth2AuthenticationSuccessHandler;
+import com.dairy.security.oAuth2Authorization.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
@@ -120,7 +127,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userService(customOAuth2UserService)
                 .and()
                 .successHandler(oAuth2AuthenticationSuccessHandler)
-                .failureHandler(oAuth2AuthenticationFailureHandler);
+                .failureHandler(oAuth2AuthenticationFailureHandler)
+                .and()
+                .logout()
+                .permitAll();
 
         // Add our custom Token based authentication filter
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

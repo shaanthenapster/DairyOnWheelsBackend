@@ -1,9 +1,10 @@
-package com.dairy.security;
+package com.dairy.security.oAuth2Authorization;
 
 
 import com.dairy.configuration.AppProperties;
 import com.dairy.configuration.CookieUtils;
 import com.dairy.configuration.HttpCookieOAuth2AuthorizationRequestRepository;
+import com.dairy.security.jwtAuthentication.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -39,8 +40,9 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     }
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        String targetUrl = determineTargetUrl(request, response, authentication);
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
+        String targetUrl = null;
+        targetUrl = determineTargetUrl(request, response, authentication);
 
         if (response.isCommitted()) {
             logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
@@ -56,7 +58,11 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
             .map(Cookie::getValue);
 
         if (redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get())) {
-            throw new BadRequestException("Sorry! We've got an Unauthorized Redirect URI and can't proceed with the authentication");
+            try {
+                throw new BadRequestException("Sorry! We've got an Unauthorized Redirect URI and can't proceed with the authentication");
+            } catch (BadRequestException e) {
+                e.printStackTrace();
+            }
         }
 
         String targetUrl = redirectUri.orElse(getDefaultTargetUrl());
@@ -81,11 +87,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
             .anyMatch(authorizedRedirectUri -> {
                 // Only validate host and port. Let the clients use different paths if they want to
                 URI authorizedURI = URI.create(authorizedRedirectUri);
-                if (authorizedURI.getHost().equalsIgnoreCase(clientRedirectUri.getHost())
-                    && authorizedURI.getPort() == clientRedirectUri.getPort()) {
-                    return true;
-                }
-                return false;
+                return authorizedURI.getHost().equalsIgnoreCase(clientRedirectUri.getHost())
+                        && authorizedURI.getPort() == clientRedirectUri.getPort();
             });
     }
 }

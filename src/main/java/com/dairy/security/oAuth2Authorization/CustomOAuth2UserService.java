@@ -1,15 +1,12 @@
 package com.dairy.security;
+
+import com.dairy.enums.AuthProvider;
 import com.dairy.model.User;
 import com.dairy.repository.UserRepo;
-import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
-
 import com.example.springsocial.exception.OAuth2AuthenticationProcessingException;
 import com.example.springsocial.model.AuthProvider;
-import com.example.springsocial.model.User;
-import com.example.springsocial.repository.UserRepository;
 import com.example.springsocial.security.UserPrincipal;
 import com.example.springsocial.security.oauth2.user.OAuth2UserInfo;
-import com.example.springsocial.security.oauth2.user.OAuth2UserInfoFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
@@ -20,7 +17,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomOAuth2UserService extends DefaultOAuth2UserService{

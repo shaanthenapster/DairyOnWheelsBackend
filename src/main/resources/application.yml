@@ -6,15 +6,28 @@ spring:
         facebook:
           clientId: 184645355974150
           clientSecret: 20bcc69a2bf06e3a9e0da2be56ca5006
-          redirectUri: "{baseUrl}/oauth2/callback/{registrationId}" # Note that facebook now mandates the use of https redirect URIs, so make sure your app supports https in production
+          redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
           scope:
           - email
           - public_profile
+        google:
+          clientId: 1055311017802-0vkokr9efttkq30pgch3nku2v8qmgp6i.apps.googleusercontent.com
+          clientSecret: 6iR50rzBWFHibh1e6gIlgGmk
+          redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+          scope:
+          - email
+          #- public_profile
+
       provider:
         facebook:
           authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
           tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
           userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+        google:
+          authorizationUri: https://accounts.google.com/o/oauth2/auth
+          tokenUri: https://oauth2.googleapis.com/token
+          #userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+
 app:
   auth:
     tokenSecret: 926D96C90030DD58429D2751AC1BDBBC

@@ -1,4 +1,4 @@
-package com.dairy.model;
+package com.dairy.enums;
 
 public enum ProductAvailability {
 

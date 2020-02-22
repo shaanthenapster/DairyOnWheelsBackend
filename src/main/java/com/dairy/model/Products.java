@@ -15,6 +15,8 @@ public class Products {
 
     private String productName;
 
+    private String productDescription;
+
     private String productImage;
 
     private ProductCategory productCategory;
@@ -29,5 +31,5 @@ public class Products {
 
     private double discount;
 
-    private double InventoryCount; // number of products avaliable in stock of the same category.
+    private double InventoryCount; // number of products available in stock of the same category.
 }

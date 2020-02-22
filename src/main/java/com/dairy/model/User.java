@@ -2,12 +2,14 @@ package com.dairy.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.security.AuthProvider;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,8 +38,18 @@ public class User {
 
     private String sex;
 
-    @OneToMany(mappedBy = "user")
-    private List<DeliveryAddress> address = new ArrayList<>();
+    private String imageUrl;
+
+    private Boolean emailVerified = false;
+
+    @JsonIgnore
+    private String password;
+
+    private AuthProvider provider;
+
+    private String providerId;
+
+    private List<DeliveryAddress> addressBook = new ArrayList<>();
 
 
     @LastModifiedDate

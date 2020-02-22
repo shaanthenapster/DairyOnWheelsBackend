@@ -2,12 +2,13 @@ package com.dairy.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 
 
-@Entity
-@Table(name = "address")
+@Document
 @Setter
 @Getter
 public class DeliveryAddress {
@@ -32,6 +33,6 @@ public class DeliveryAddress {
 
     private String longitude;
 
-    @ManyToOne
+    @DBRef
     private User user;
 }

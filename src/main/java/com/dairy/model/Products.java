@@ -1,16 +1,25 @@
 package com.dairy.model;
 
 
+import com.dairy.enums.ProductAvailability;
+import com.dairy.enums.ProductCategory;
+import com.dairy.enums.ProductType;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 
-@Entity
-@Table(name = "products")
+@Document
+@Setter
+@Getter
 public class Products {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Indexed
     private String productId;
 
     private String productName;
@@ -23,7 +32,7 @@ public class Products {
 
     private ProductType productType;
 
-    private ProductAvailability productAvalibility;
+    private ProductAvailability productAvailability;
 
     private double productPrice;
 

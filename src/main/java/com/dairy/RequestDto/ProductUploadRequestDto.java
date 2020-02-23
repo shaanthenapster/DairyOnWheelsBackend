@@ -19,9 +19,11 @@ public class ProductUploadRequestDto {
 
     private String productImage;
 
-    private ProductCategory productCategory;
+    private int productCategory;
 
-    private ProductType productType;
+    private int productType;
+
+    private int productAvailability;
 
     private double productPrice;
 

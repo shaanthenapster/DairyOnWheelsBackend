@@ -15,7 +15,7 @@ import java.util.Date;
 @Getter
 public class Order {
 
-    @Id
+
     private String id;
 
     @Indexed

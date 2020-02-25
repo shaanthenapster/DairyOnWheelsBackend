@@ -15,7 +15,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 public class Images {
 
-    @Id
     private String id;
 
     private String title;

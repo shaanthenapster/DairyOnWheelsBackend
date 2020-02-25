@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Base64;
 
 @RestController
+@RequestMapping(value = "/image")
 public class ImageController {
 
 

@@ -13,9 +13,8 @@ import javax.persistence.*;
 @Getter
 public class DeliveryAddress {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+
+    private String id;
 
     private String houseNo;
 

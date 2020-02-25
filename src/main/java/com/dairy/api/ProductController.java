@@ -65,6 +65,26 @@ public class ProductController {
         }
     }
 
+
+
+    @GetMapping("/product/showAll")
+    public ResponseEntity<?> showAllProducts() throws UserException {
+        SuccessResponseDto srdto = new SuccessResponseDto();
+        ErrorResponseDto erdto = new ErrorResponseDto();
+
+        List<Products> products = productService.showAllAvaliableProducts();
+
+        if (!products.isEmpty()) {
+            srdto.setSuccessCode(SuccessCodes.API_SUCCESS);
+            srdto.getExtraData().put("PRODUCT", products);
+            return ResponseEntity.ok().body(srdto);
+        } else {
+            erdto.setException(CustomException.PRODUCT_NOT_FOUND);
+            erdto.getMsg().add("INVALID_PRODUCT_ID");
+            return ResponseEntity.ok().body(erdto);
+        }
+    }
+
     @GetMapping("/product/type")
     public ResponseEntity<?> showProductByType(@RequestParam int type) throws UserException {
 

@@ -3,6 +3,7 @@ package com.dairy.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 
@@ -11,10 +12,9 @@ import javax.persistence.*;
 @Table
 @Setter
 @Getter
+@Document
 public class MobileOtp {
 
-        @Id
-        @GeneratedValue(strategy= GenerationType.AUTO)
         private int id;
 
         private String mobileNumber;

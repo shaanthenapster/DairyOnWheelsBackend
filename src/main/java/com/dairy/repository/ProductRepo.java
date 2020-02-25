@@ -1,5 +1,6 @@
 package com.dairy.repository;
 
+import com.dairy.enums.BrandCategory;
 import com.dairy.enums.ProductAvailability;
 import com.dairy.enums.ProductType;
 import com.dairy.model.Products;
@@ -16,12 +17,14 @@ public interface ProductRepo extends MongoRepository<Products , Long> {
     List<Products> findAll();
 
     @Override
-    Optional<Products> save(Products products);
+    Products save(Products products);
 
-    Products findByProductType(ProductType productType);
+    Optional<List<Products>> findByProductType(ProductType productType);
 
     void deleteByProductId(String id);
 
-    Products findByProductAvailability(ProductAvailability productAvailability);
+    List<Products> findByProductAvailability(ProductAvailability productAvailability);
+
+    List<Products> findByBrandCategory(BrandCategory brandCategory);
 
 }

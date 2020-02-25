@@ -1,7 +1,5 @@
-package com.dairy.RequestDto;
+package com.dairy.requestDto;
 
-import com.dairy.enums.ProductCategory;
-import com.dairy.enums.ProductType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,14 +21,13 @@ public class ProductUploadRequestDto {
 
     private int productType;
 
-    private int productAvailability;
-
     private double productPrice;
-
-    private double productRating;
 
     private double discount;
 
-    private double InventoryCount;
+    private int inventoryCount;
 
+    private int brandType;
+
+    private int productSizeVariant;
 }

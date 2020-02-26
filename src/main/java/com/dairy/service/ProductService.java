@@ -89,7 +89,7 @@ public class ProductService{
 
  }
 
- public List<Products> showAllAvaliableProducts() throws UserException {
+ public List<Products> showAllAvailableProducts() throws UserException {
 
      List<Products> products = productRepo.findByProductAvailability(ProductAvailability.AVAILABILE);
      return products;

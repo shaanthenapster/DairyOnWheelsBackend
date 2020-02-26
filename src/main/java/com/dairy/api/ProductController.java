@@ -65,14 +65,12 @@ public class ProductController {
         }
     }
 
-
-
     @GetMapping("/product/showAll")
     public ResponseEntity<?> showAllProducts() throws UserException {
         SuccessResponseDto srdto = new SuccessResponseDto();
         ErrorResponseDto erdto = new ErrorResponseDto();
 
-        List<Products> products = productService.showAllAvaliableProducts();
+        List<Products> products = productService.showAllProducts();
 
         if (!products.isEmpty()) {
             srdto.setSuccessCode(SuccessCodes.API_SUCCESS);
@@ -123,13 +121,13 @@ public class ProductController {
 
     }
 
-    @GetMapping("/product/avaliable")
-    public ResponseEntity<?> showAllAvaliableProducts() throws UserException {
+    @GetMapping("/product/available")
+    public ResponseEntity<?> showAllAvailableProducts() throws UserException {
 
         SuccessResponseDto srdto = new SuccessResponseDto();
         ErrorResponseDto erdto = new ErrorResponseDto();
 
-        List<Products> products = productService.showAllAvaliableProducts();
+        List<Products> products = productService.showAllAvailableProducts();
 
         if(products.isEmpty()){
             erdto.setException(CustomException.PRODUCT_NOT_AVALIABLE);

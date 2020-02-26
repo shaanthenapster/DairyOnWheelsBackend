@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 public class Coupons {
 
-    private int id;
+    private String  id;
 
     private String couponCode;
 

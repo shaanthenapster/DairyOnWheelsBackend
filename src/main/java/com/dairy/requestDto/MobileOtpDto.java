@@ -1,4 +1,4 @@
-package com.dairy.RequestDto;
+package com.dairy.requestDto;
 
 import lombok.Getter;
 import lombok.Setter;

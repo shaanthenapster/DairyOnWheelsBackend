@@ -1,6 +1,6 @@
 package com.dairy.service;
 
-import com.dairy.RequestDto.MobileOtpDto;
+import com.dairy.requestDto.MobileOtpDto;
 import com.dairy.repository.MobileOtpRepo;
 import com.dairy.exception.CustomException;
 import com.dairy.exception.UserException;

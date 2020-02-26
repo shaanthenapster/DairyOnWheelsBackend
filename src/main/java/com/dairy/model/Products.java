@@ -1,16 +1,25 @@
 package com.dairy.model;
 
 
-import javax.persistence.*;
+import com.dairy.enums.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "products")
+import java.util.Date;
+
+@Document
+@Setter
+@Getter
 public class Products {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String  id;
 
+    @Indexed
     private String productId;
 
     private String productName;
@@ -23,7 +32,9 @@ public class Products {
 
     private ProductType productType;
 
-    private ProductAvailability productAvalibility;
+    private ProductAvailability productAvailability;
+
+    private BrandCategory brandCategory;
 
     private double productPrice;
 
@@ -31,5 +42,16 @@ public class Products {
 
     private double discount;
 
-    private double InventoryCount; // number of products available in stock of the same category.
+    private ProductPackagingWeight productPackagingWeight;
+
+    private int inventoryCount; // number of products available in stock of the same category.
+
+    @CreatedDate
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z", timezone = "Asia/Kolkata")
+    private Date createdAt;
+
+    @LastModifiedDate
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z", timezone = "Asia/Kolkata")
+    private Date modifiedAt;
+
 }

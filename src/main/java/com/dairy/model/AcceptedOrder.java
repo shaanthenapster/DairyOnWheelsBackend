@@ -12,7 +12,7 @@ import java.util.Date;
 @Document
 @Setter
 @Getter
-public class Order {
+public class AcceptedOrder {
 
 
     private String id;
@@ -36,6 +36,8 @@ public class Order {
     private Coupons couponCode;
 
     private double orderRating;
+
+    private Payment payment;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z", timezone = "Asia/Kolkata")
     private Date orderDate;

@@ -9,4 +9,6 @@ public interface UserRepo extends MongoRepository<User , Long> {
 
     User findByContact(String mobileno);
 
+    User findByUuid(String uuid);
+
 }

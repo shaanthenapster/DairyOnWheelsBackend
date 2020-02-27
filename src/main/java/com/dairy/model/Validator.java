@@ -1,8 +1,14 @@
 package com.dairy.model;
 
+import com.dairy.repository.UserRepo;
+import org.springframework.stereotype.Service;
+
 import java.util.regex.Pattern;
 
+@Service
 public class Validator {
+
+    static UserRepo userRepo;
 
     public static boolean isValidPhoneNumber(String phonenumber) {
         String PhoneNumber = "^[0-9][0-9]{7,13}$";
@@ -17,5 +23,13 @@ public class Validator {
         if (ipaddress == null)
             return false;
         return ptn.matcher(ipaddress).matches();
+    }
+
+
+    public static String isvalidUserId(String uuid){
+        User user = userRepo.findByUuid(uuid);
+        if(user == null)
+            return null;
+        return user.getUuid();
     }
 }

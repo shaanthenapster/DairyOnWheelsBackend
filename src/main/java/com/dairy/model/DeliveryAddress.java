@@ -32,6 +32,4 @@ public class DeliveryAddress {
 
     private String longitude;
 
-    @DBRef
-    private User user;
 }

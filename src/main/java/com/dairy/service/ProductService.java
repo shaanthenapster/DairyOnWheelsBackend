@@ -51,6 +51,8 @@ public class ProductService{
 
  }
 
+
+ // todo: handle fatal exception in case of no product found with specified ID
  @Transactional
  public Optional<Products> viewProductByProductId(String productId) throws UserException {
 
@@ -102,6 +104,8 @@ public class ProductService{
  }
 
  public List<Products> showProductsByBrand(BrandCategory brandCategory) throws UserException {
+
+
 
      List<Products> products = productRepo.findByBrandCategory(brandCategory);
      return products;

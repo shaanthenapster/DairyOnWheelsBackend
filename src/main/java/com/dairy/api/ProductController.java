@@ -145,6 +145,10 @@ public class ProductController {
     @GetMapping("/product/brand")
     public ResponseEntity<?> showProductsByBrand(@RequestParam BrandCategory brandCategory) throws UserException {
 
+        if(!brandCategory.equals(BrandCategory.AMUL) || )
+
+
+
         SuccessResponseDto srdto = new SuccessResponseDto();
         ErrorResponseDto erdto = new ErrorResponseDto();
 

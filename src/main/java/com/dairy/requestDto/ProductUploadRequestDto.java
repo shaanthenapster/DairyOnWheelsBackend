@@ -15,7 +15,7 @@ public class ProductUploadRequestDto {
 
     private String productDescription;
 
-    private String productImage;
+    private String productImage; // URL SAVE
 
     private int productCategory;
 

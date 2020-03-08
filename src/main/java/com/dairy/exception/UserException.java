@@ -8,7 +8,7 @@ import java.util.List;
 
 @Setter
 @Getter
-public class UserException extends Exception {
+public class UserException extends RuntimeException {
 
     private static final long serialVersionUID = 1375729682591813893L;
 

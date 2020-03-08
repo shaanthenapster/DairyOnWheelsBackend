@@ -9,7 +9,9 @@ import lombok.Setter;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document
 @Setter
@@ -25,7 +27,7 @@ public class PendingOrder {
 
     private DeliveryAddress deliveryAddress;
 
-    private OrderStatus orderStatus;
+    private OrderStatus orderStatus = OrderStatus.AWAITING_CONFIRMATION;
 
     private int orderQuantity;
 
@@ -35,5 +37,7 @@ public class PendingOrder {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z", timezone = "Asia/Kolkata")
     private Date orderDate;
+
+    List<OrderProduct> productsList = new ArrayList<>();
 
 }

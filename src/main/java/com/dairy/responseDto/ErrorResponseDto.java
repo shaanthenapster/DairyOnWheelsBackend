@@ -13,7 +13,7 @@ import java.util.Map;
 @Getter
 public class ErrorResponseDto {
 
-    private List<String> msg = new ArrayList<>();
+    private String msg = null;
     private boolean status = false;
     private CustomException exception;
     private int statusCode = 404;

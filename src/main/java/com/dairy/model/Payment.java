@@ -22,5 +22,4 @@ public class Payment{
 
     private PaymentStatus paymentStatus;
 
-
 }

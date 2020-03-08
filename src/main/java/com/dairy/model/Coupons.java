@@ -11,15 +11,17 @@ import java.util.Date;
 @Getter
 public class Coupons {
 
-    private String  id;
+    private String id;
 
     private String couponCode;
 
     private String couponDescription;
 
-    private boolean isValid;
+    private boolean isPercentage = false;
 
     private double discount;
+
+    private boolean isValid = true;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z", timezone = "Asia/Kolkata")
     private LocalDateTime validDate;

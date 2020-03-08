@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Getter
 public class DeliveryAddress {
 
-
     private String id;
 
     private String houseNo;

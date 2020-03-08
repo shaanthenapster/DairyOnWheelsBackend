@@ -23,6 +23,9 @@ public class PendingOrder {
     private String id;
 
     @Indexed
+    private String pendingOrderId;
+
+    @Indexed
     private String uuid;
 
     private DeliveryAddress deliveryAddress;

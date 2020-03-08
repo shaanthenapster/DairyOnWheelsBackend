@@ -32,9 +32,8 @@ public class AcceptedOrder {
 
     private double totalPrice;
 
-    private boolean isCouponApplied;
-
-    private Coupons couponCode;
+    @Indexed
+    private String couponCode;
 
     private double orderRating;
 

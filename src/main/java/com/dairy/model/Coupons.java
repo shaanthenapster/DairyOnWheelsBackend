@@ -3,6 +3,7 @@ package com.dairy.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,6 +14,7 @@ public class Coupons {
 
     private String id;
 
+    @Indexed
     private String couponCode;
 
     private String couponDescription;

@@ -25,7 +25,7 @@ public class ProductService{
  public synchronized Optional<String> insertProduct(ProductUploadRequestDto dto) throws UserException {
 
      Products products = new Products();
-     products.setProductId(UtilityServices.productIdgenerator(0));
+     products.setProductId(UtilityServices.genricIdgenerator(0));
      products.setProductName(dto.getProductName());
      products.setProductDescription(dto.getProductDescription());
      products.setProductImage(dto.getProductImage());

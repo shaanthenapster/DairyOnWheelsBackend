@@ -107,13 +107,8 @@ CouponRepo couponRepo;
 
             }
         }
-
-
-
         return true;
    }
-
-
 
 
    public Coupons validateCoupon(String couponCode) throws UserException {

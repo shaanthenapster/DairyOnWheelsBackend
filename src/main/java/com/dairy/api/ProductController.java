@@ -51,9 +51,7 @@ public class ProductController {
     public ResponseEntity<?> showProductById(@RequestParam String productId) throws UserException {
         SuccessResponseDto srdto = new SuccessResponseDto();
         ErrorResponseDto erdto = new ErrorResponseDto();
-
         Optional<Products> products = productService.viewProductByProductId(productId);
-
         if (products.isPresent()) {
             srdto.setSuccessCode(SuccessCodes.API_SUCCESS);
             srdto.getExtraData().put("PRODUCT", products);
@@ -69,9 +67,7 @@ public class ProductController {
     public ResponseEntity<?> showAllProducts() throws UserException {
         SuccessResponseDto srdto = new SuccessResponseDto();
         ErrorResponseDto erdto = new ErrorResponseDto();
-
         List<Products> products = productService.showAllProducts();
-
         if (!products.isEmpty()) {
             srdto.setSuccessCode(SuccessCodes.API_SUCCESS);
             srdto.getExtraData().put("PRODUCT", products);
@@ -88,9 +84,7 @@ public class ProductController {
 
         SuccessResponseDto srdto = new SuccessResponseDto();
         ErrorResponseDto erdto = new ErrorResponseDto();
-
         Optional<List<Products>> products = productService.viewProductByProductType(type);
-
         if(products.isPresent()){
             srdto.setSuccessCode(SuccessCodes.API_SUCCESS);
             srdto.getExtraData().put("PRODUCTS" , products);
@@ -125,10 +119,8 @@ public class ProductController {
     public ResponseEntity<?> showAllAvailableProducts() throws UserException {
 
         SuccessResponseDto srdto = new SuccessResponseDto();
-        ErrorResponseDto erdto = new ErrorResponseDto();
-
+        ErrorResponseDto erdto = new ErrorResponseDto()
         List<Products> products = productService.showAllAvailableProducts();
-
         if(products.isEmpty()){
             erdto.setException(CustomException.PRODUCT_NOT_AVALIABLE);
             erdto.getMsg().add("NO PRODUCTS AVALIABLE");
@@ -147,9 +139,7 @@ public class ProductController {
 
         SuccessResponseDto srdto = new SuccessResponseDto();
         ErrorResponseDto erdto = new ErrorResponseDto();
-
         List<Products> products = productService.showProductsByBrand(brandCategory);
-
         if(products.isEmpty()){
             erdto.setException(CustomException.PRODUCT_NOT_AVALIABLE);
             erdto.getMsg().add("NO PRODUCTS AVALIABLE OF GIVEN BRAND");

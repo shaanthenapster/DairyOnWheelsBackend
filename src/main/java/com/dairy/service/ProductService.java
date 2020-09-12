@@ -88,25 +88,19 @@ public class ProductService{
      }
      else
          throw new UserException("NO PRODUCT FOUND WITH SPECIFIED ID", CustomException.PRODUCT_NOT_FOUND);
-
  }
 
  public List<Products> showAllAvailableProducts() throws UserException {
-
      List<Products> products = productRepo.findByProductAvailability(ProductAvailability.AVAILABILE);
      return products;
  }
 
  public List<Products> showAllProducts() throws UserException {
-
      List<Products> products = productRepo.findAll();
      return products;
  }
 
  public List<Products> showProductsByBrand(BrandCategory brandCategory) throws UserException {
-
-
-
      List<Products> products = productRepo.findByBrandCategory(brandCategory);
      return products;
  }

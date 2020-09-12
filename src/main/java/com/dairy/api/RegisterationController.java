@@ -37,9 +37,6 @@ public class RegisterationController {
         registrationLoginService.registerationByMobileNumber(otpDto);
         sdto.setSuccessCode(SuccessCodes.OTP_SEND_ON_PHONE);
         return ResponseEntity.ok().body(sdto);
-
-
-
     }
 }
 

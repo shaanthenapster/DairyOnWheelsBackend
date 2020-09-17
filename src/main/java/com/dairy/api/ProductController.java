@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class ProductController {
+public class    ProductController {
 
     @Autowired
     ProductService productService;
@@ -119,7 +119,7 @@ public class ProductController {
     public ResponseEntity<?> showAllAvailableProducts() throws UserException {
 
         SuccessResponseDto srdto = new SuccessResponseDto();
-        ErrorResponseDto erdto = new ErrorResponseDto()
+        ErrorResponseDto erdto = new ErrorResponseDto();
         List<Products> products = productService.showAllAvailableProducts();
         if(products.isEmpty()){
             erdto.setException(CustomException.PRODUCT_NOT_AVALIABLE);
